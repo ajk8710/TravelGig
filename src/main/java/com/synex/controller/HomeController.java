@@ -15,7 +15,7 @@ public class HomeController {
     
     @Autowired UserService userService;
     
-    @GetMapping("home")
+    @GetMapping(value={"home", "/"})
     public String home(Principal principal, Model model) {
         modelData(principal, model);
         return "home";
