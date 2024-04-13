@@ -37,6 +37,7 @@ public class BookingClient {
     @GetMapping
     public JsonNode findAllByUserName(String userName, HttpServletRequest servletRequest) {
         String contextPath = servletRequest.getContextPath();
+        System.out.println(contextPath);
         
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
