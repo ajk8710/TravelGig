@@ -20,7 +20,7 @@ public class ReviewClient {
         
         RestTemplate restTemplate = new RestTemplate();  // use restTemplate to send request to another project
         ResponseEntity<Object> responseEntity =          // and receive response back from another project
-                restTemplate.postForEntity("http://localhost:8083/saveReview", request, Object.class);
+                restTemplate.postForEntity("http://localhost:8083/TravelGig-BookingMicroservice/saveReview", request, Object.class);
         Object obj = responseEntity.getBody();  // get body of response
         
         ObjectMapper mapper = new ObjectMapper();  // use objectMapper to convert body to json.
@@ -32,7 +32,7 @@ public class ReviewClient {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8083/findAllReviewsByHotelId/" + hotelId, Object.class);  // Response is List<Review>
+                restTemplate.getForEntity("http://localhost:8083/TravelGig-BookingMicroservice/findAllReviewsByHotelId/" + hotelId, Object.class);  // Response is List<Review>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json

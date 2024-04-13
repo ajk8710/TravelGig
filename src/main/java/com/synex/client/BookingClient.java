@@ -20,7 +20,7 @@ public class BookingClient {
         
         RestTemplate restTemplate = new RestTemplate();  // use restTemplate to send request to another project
         ResponseEntity<Object> responseEntity =          // and receive response back from another project
-                restTemplate.postForEntity("http://localhost:8083/saveBooking", request, Object.class);
+                restTemplate.postForEntity("http://localhost:8083/TravelGig-BookingMicroservice/saveBooking", request, Object.class);
         Object obj = responseEntity.getBody();  // get body of response
         
         ObjectMapper mapper = new ObjectMapper();  // use objectMapper to convert body to json.
@@ -32,7 +32,7 @@ public class BookingClient {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8083/findAllByUserName/" + userName, Object.class);  // Response is List<Booking>
+                restTemplate.getForEntity("http://localhost:8083/TravelGig-BookingMicroservice/findAllByUserName/" + userName, Object.class);  // Response is List<Booking>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json
@@ -43,13 +43,13 @@ public class BookingClient {
     public void deleteBookingById(int id) {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://localhost:8083/deleteBookingById/" + id, Object.class);
+        restTemplate.delete("http://localhost:8083/TravelGig-BookingMicroservice/deleteBookingById/" + id, Object.class);
     }
     
     public void cancelBookingById(int id) {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://localhost:8083/cancelBookingById/" + id, Object.class);
+        restTemplate.delete("http://localhost:8083/TravelGig-BookingMicroservice/cancelBookingById/" + id, Object.class);
     }
     
 }

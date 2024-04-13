@@ -20,7 +20,7 @@ public class GuestClient {  // Not using it right now. Instead save guests along
         
         RestTemplate restTemplate = new RestTemplate();  // use restTemplate to send request to another project
         ResponseEntity<Object> responseEntity =          // and receive response back from another project
-                restTemplate.postForEntity("http://localhost:8083/saveGuest", request, Object.class);
+                restTemplate.postForEntity("http://localhost:8083/TravelGig-BookingMicroservice/saveGuest", request, Object.class);
         Object obj = responseEntity.getBody();  // get body of response
         
         ObjectMapper mapper = new ObjectMapper();  // use objectMapper to convert body to json.

@@ -14,7 +14,7 @@ public class HotelClient {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8084/findHotelById/" + id, Object.class);  // Response is List<Booking>
+                restTemplate.getForEntity("http://localhost:8084/TravelGig-HotelMicroservice/findHotelById/" + id, Object.class);  // Response is List<Booking>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json
@@ -26,7 +26,7 @@ public class HotelClient {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8084/searchHotel/" + searchString, Object.class);  // Response is List<Hotel>
+                restTemplate.getForEntity("http://localhost:8084/TravelGig-HotelMicroservice/searchHotel/" + searchString, Object.class);  // Response is List<Hotel>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json
@@ -38,7 +38,7 @@ public class HotelClient {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8084/getRoomTypesOfHotel/" + hotelId, Object.class);  // Response is List<Hotel>
+                restTemplate.getForEntity("http://localhost:8084/TravelGig-HotelMicroservice/getRoomTypesOfHotel/" + hotelId, Object.class);  // Response is List<Hotel>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json
@@ -50,7 +50,7 @@ public class HotelClient {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8084/getRoomPriceAndDiscount/" + hotelId + "/" + roomTypeId, Object.class);  // Response is List<Hotel>
+                restTemplate.getForEntity("http://localhost:8084/TravelGig-HotelMicroservice/getRoomPriceAndDiscount/" + hotelId + "/" + roomTypeId, Object.class);  // Response is List<Hotel>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json
