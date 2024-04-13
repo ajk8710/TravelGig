@@ -8,16 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.synex.client.GuestClient;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 @RestController
 public class GuestController {  // Not using it right now. Instead save guests along with booking through saveBookng.
     
     @Autowired GuestClient guestClient;
     
     @PostMapping("saveGuest")
-    public JsonNode saveGuest(@RequestBody JsonNode json, HttpServletRequest servletRequest) {
-        return guestClient.saveGuest(json, servletRequest);
+    public JsonNode saveGuest(@RequestBody JsonNode json) {
+        return guestClient.saveGuest(json);
     }
     
 }

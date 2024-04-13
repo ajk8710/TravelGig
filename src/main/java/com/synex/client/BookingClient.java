@@ -5,28 +5,22 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 @Component
 public class BookingClient {
     
-    @GetMapping  // RequestMapping annotation for HttpServletRequest
-    public JsonNode saveBooking(JsonNode json, HttpServletRequest servletRequest) {  // get json from controller
-        String contextPath = servletRequest.getContextPath();
-        
+    public JsonNode saveBooking(JsonNode json) {  // get json from controller
         HttpHeaders headers = new HttpHeaders();  // make sure to import from spring package, not java.net package
         headers.setContentType(MediaType.APPLICATION_JSON);  // construct request to be sent to another project's API
         HttpEntity<String> request = new HttpEntity<>(json.toString(), headers);  // new HttpEntity<>(body, headers)
         
         RestTemplate restTemplate = new RestTemplate();  // use restTemplate to send request to another project
         ResponseEntity<Object> responseEntity =          // and receive response back from another project
-                restTemplate.postForEntity("http://localhost:8083/" + contextPath + "/saveBooking", request, Object.class);
+                restTemplate.postForEntity("http://localhost:8083/TravelGig-BookingMicroservice/saveBooking", request, Object.class);
         Object obj = responseEntity.getBody();  // get body of response
         
         ObjectMapper mapper = new ObjectMapper();  // use objectMapper to convert body to json.
@@ -34,15 +28,11 @@ public class BookingClient {
         return returnObj;
     }
     
-    @GetMapping
-    public JsonNode findAllByUserName(String userName, HttpServletRequest servletRequest) {
-        String contextPath = servletRequest.getContextPath();
-        System.out.println(contextPath);
-        
+    public JsonNode findAllByUserName(String userName) {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity =  // get reseponseEntity from API of another project (microservice)
-                restTemplate.getForEntity("http://localhost:8083/" + contextPath + "/findAllByUserName/" + userName, Object.class);  // Response is List<Booking>
+                restTemplate.getForEntity("http://localhost:8083/TravelGig-BookingMicroservice/findAllByUserName/" + userName, Object.class);  // Response is List<Booking>
         Object obj = responseEntity.getBody();  // get body of responseEntity
         
         ObjectMapper mapper = new ObjectMapper();  // let mapper to convert it to json
@@ -50,22 +40,16 @@ public class BookingClient {
         return returnObj;
     }
     
-    @GetMapping
-    public void deleteBookingById(int id, HttpServletRequest servletRequest) {
-        String contextPath = servletRequest.getContextPath();
-        
+    public void deleteBookingById(int id) {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://localhost:8083/" + contextPath + "/deleteBookingById/" + id, Object.class);
+        restTemplate.delete("http://localhost:8083/TravelGig-BookingMicroservice/deleteBookingById/" + id, Object.class);
     }
     
-    @GetMapping
-    public void cancelBookingById(int id, HttpServletRequest servletRequest) {
-        String contextPath = servletRequest.getContextPath();
-        
+    public void cancelBookingById(int id) {
         // RestTemplate can make requests to another project on another port.
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://localhost:8083/" + contextPath + "/cancelBookingById/" + id, Object.class);
+        restTemplate.delete("http://localhost:8083/TravelGig-BookingMicroservice/cancelBookingById/" + id, Object.class);
     }
     
 }
