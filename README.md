@@ -1,4 +1,4 @@
-# Hotel Reservation Application
+# Hotel Reservation Application (TravelGig)
 - Spring Boot application with microservices architecture.
 - The user can look up hotels, filter searches by price and rating, log in to book available rooms, cancel bookings, see past/upcoming/canceled bookings, and rate/review hotels.
 - Utilized Oracle for databases.
@@ -9,7 +9,6 @@
 
 ## Deployment
 - TravelGig App to be built (Maven) and deployed (Tomcat) by Jenkins.
-- TravelGig is a Hotel Reservation/Booking App.
 - Deployed on AWS EC2 server.
 - Triggering Jenkins by GitHub webhook and handling the firewall on EC2 by Smee.
 
