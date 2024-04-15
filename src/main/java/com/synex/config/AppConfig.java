@@ -19,7 +19,7 @@ public class AppConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        dataSource.setUrl("jdbc:oracle:thin:@172.31.12.207:1521:xe");
         dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
         dataSource.setUsername("root");
         dataSource.setPassword("admin");
